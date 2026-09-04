@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NeonWave — a responsive web music player with playlists, favorites, shuffle, repeat, autoplay, and light/dark themes.">
+  <meta name="theme-color" content="#080914">
+  <title>NeonWave Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="NeonWave home">
+        <span class="brand-mark" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <span>Neon<span>Wave</span></span>
+      </a>
+
+      <div class="topbar-actions">
+        <p class="now-status"><span></span> Ready to play</p>
+        <button class="icon-button" id="themeButton" type="button" aria-label="Switch to light theme" title="Change theme">
+          <span id="themeIcon" aria-hidden="true">☀</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="music-layout">
+      <aside class="sidebar glass-panel" aria-label="Music library">
+        <p class="eyebrow">YOUR MUSIC</p>
+        <nav class="side-nav">
+          <button class="nav-item active" type="button" data-filter="all">
+            <span aria-hidden="true">♫</span> All tracks <b id="allCount">6</b>
+          </button>
+          <button class="nav-item" type="button" data-filter="favorites">
+            <span aria-hidden="true">♥</span> Favorites <b id="favoriteCount">0</b>
+          </button>
+        </nav>
+
+        <div class="listening-card">
+          <p class="eyebrow">LISTENING TIME</p>
+          <strong id="listeningTime">0 min</strong>
+          <p>Your session today</p>
+          <div class="mini-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <span aria-hidden="true">✦</span>
+          <p><strong>Quick tip</strong>Press <kbd>Space</kbd> to play or pause.</p>
+        </div>
+      </aside>
+
+      <section class="player-panel glass-panel" aria-label="Now playing">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">NOW PLAYING</p>
+            <h1>Your daily soundtrack</h1>
+          </div>
+          <button class="favorite-main" id="favoriteButton" type="button" aria-label="Add current song to favorites" title="Favorite song">♡</button>
+        </div>
+
+        <div class="art-stage">
+          <div class="art-glow"></div>
+          <img id="albumArtwork" src="assets/cover-1.webp" alt="Midnight Drive album cover">
+          <div class="playing-badge" id="playingBadge"><span></span> PLAYING</div>
+        </div>
+
+        <div class="track-copy">
+          <p class="track-number" id="trackNumber">TRACK 01 / 06</p>
+          <h2 id="songTitle">Midnight Drive</h2>
+          <p id="artistName">Nova Echoes</p>
+        </div>
+
+        <div class="progress-area">
+          <div class="time-row">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+          <input id="progressBar" class="range-control progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Song progress">
+        </div>
+
+        <div class="main-controls" aria-label="Playback controls">
+          <button class="control-button mode-button" id="shuffleButton" type="button" aria-label="Turn shuffle on" title="Shuffle">⇄</button>
+          <button class="control-button" id="previousButton" type="button" aria-label="Previous song" title="Previous">|◀</button>
+          <button class="play-button" id="playButton" type="button" aria-label="Play song"><span id="playIcon">▶</span></button>
+          <button class="control-button" id="nextButton" type="button" aria-label="Next song" title="Next">▶|</button>
+          <button class="control-button mode-button" id="repeatButton" type="button" aria-label="Turn repeat on" title="Repeat">↻</button>
+        </div>
+
+        <div class="utility-row">
+          <div class="volume-control">
+            <button class="mute-button" id="muteButton" type="button" aria-label="Mute sound" title="Mute"><span id="volumeIcon">🔊</span></button>
+            <input id="volumeBar" class="range-control volume" type="range" min="0" max="1" value="0.75" step="0.01" aria-label="Volume">
+            <span id="volumeValue">75%</span>
+          </div>
+
+          <label class="switch-label" for="autoplayToggle">
+            Autoplay
+            <input id="autoplayToggle" type="checkbox" checked>
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+        </div>
+      </section>
+
+      <aside class="playlist-panel glass-panel" aria-label="Playlist">
+        <div class="playlist-heading">
+          <div>
+            <p class="eyebrow">UP NEXT</p>
+            <h2>Playlist</h2>
+          </div>
+          <span id="playlistCount">6 songs</span>
+        </div>
+
+        <div class="playlist" id="playlist"></div>
+
+        <div class="queue-footer">
+          <span>QUEUE DURATION</span>
+          <strong>34 min</strong>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <p>NeonWave <span>•</span> Music feels better here</p>
+      <p>Use headphones for the best experience</p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="audioPlayer" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
