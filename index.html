@@ -29,6 +29,26 @@
         <button class="icon-button" id="themeButton" type="button" aria-label="Switch to light theme" title="Change theme">
           <span id="themeIcon" aria-hidden="true">☀</span>
         </button>
+        <div class="mobile-menu-wrap">
+          <button class="icon-button mobile-menu-button" id="mobileMenuButton" type="button"
+            aria-label="Open music menu" aria-expanded="false" aria-controls="mobileMenu" title="Music menu">
+            <span aria-hidden="true">⋮</span>
+          </button>
+
+          <div class="mobile-menu" id="mobileMenu" hidden>
+            <p class="mobile-menu-label">YOUR MUSIC</p>
+            <button class="mobile-nav-item active" type="button" data-filter="all">
+              <span aria-hidden="true">♫</span>
+              <span>All Playlist</span>
+              <b id="mobileAllCount">6</b>
+            </button>
+            <button class="mobile-nav-item" type="button" data-filter="favorites">
+              <span aria-hidden="true">♥</span>
+              <span>Liked Songs</span>
+              <b id="mobileFavoriteCount">0</b>
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -115,7 +135,7 @@
         <div class="playlist-heading">
           <div>
             <p class="eyebrow">UP NEXT</p>
-            <h2>Playlist</h2>
+            <h2 id="playlistTitle">All Playlist</h2>
           </div>
           <span id="playlistCount">6 songs</span>
         </div>
