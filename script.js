@@ -31,7 +31,7 @@ const songs = [
     title: "Qaafirana Kedarnath",
     artist: "Arijit Singh, Nikhita Gandhi and Amit Trivedi",
     duration: "6:16",
-    file: "music1/Qaafirana_Kedarnath___Sushant_Rajput___Sara_Ali_Khan___Arijit_Singh___Nikhita___Amit_Trivedi(256k).mp3",
+    file: "music1/Qaafirana.mp3",
     cover: "image1/5.jpg"
   },
   {
